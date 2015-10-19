@@ -1,0 +1,6 @@
+#! /bin/bash
+
+echo "#! /bin/bash
+bash \"${0%"/"*}/main.sh\"
+" > "${0%/*}"/Run
+chmod a+x "${0%/*}"/Run

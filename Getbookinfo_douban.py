@@ -15,11 +15,15 @@ bookname=jsonobj['title']
 _pubdate=jsonobj['pubdate']
 #print(_pubdate)
 pubdate=_pubdate[:4]
-if len(_pubdate)<=6 or _pubdate[6]=='-':
+if len(_pubdate)<=4:
+    pubdate=_pubdate
+    print("Notice that the pubdate is incomplete. Please manually check this.")
+elif (len(_pubdate)>=5 and len(_pubdate)<=6) or _pubdate[6]=='-':
     pubdate=pubdate+'0'+_pubdate[5:6]
 else:
-    pubdate=pubdate+pubdate[5:7]
+    pubdate=pubdate+_pubdate[5:7]
 s=author+'_'+isbn+'_'+bookname+'_'+pubdate
 print(s)
 print("Check http://book.douban.com/isbn/{0}/ for serial information.".format(par1))
+print("PRICE:{}".format(jsonobj['price']))
 
